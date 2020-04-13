@@ -1,7 +1,10 @@
 package com.summerflower.movie.services;
 
+import com.summerflower.movie.entities.Movie;
 import com.summerflower.movie.repositories.MovieRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MovieService {
@@ -13,4 +16,7 @@ public class MovieService {
         this.movieRepository = movieRepository;
     }
 
+    public Iterable<Movie> getMovies() {
+        return movieRepository.findAll();
+    }
 }

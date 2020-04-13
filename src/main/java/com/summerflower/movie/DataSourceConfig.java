@@ -14,7 +14,7 @@ public class DataSourceConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/user?useUnicode=true&characterEncoding=utf-8");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/SummerFlower?useUnicode=true&characterEncoding=utf-8");
         dataSource.setUsername("root");
         dataSource.setPassword("guoer123");
         return dataSource;

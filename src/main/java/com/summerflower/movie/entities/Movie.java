@@ -9,7 +9,7 @@ public class Movie {
 
     @Id
     private int id;
-    private String url;
+    private String alt;
     private int year;
     private String title;
     private float rating;
@@ -21,9 +21,9 @@ public class Movie {
     @Column("image")
     private String imageUrl;
 
-    public Movie(int id, String url, int year, String title, float rating, String originalTitle, String directors, String casts, String genres, String imageUrl) {
+    public Movie(int id, String alt, int year, String title, float rating, String originalTitle, String directors, String casts, String genres, String imageUrl) {
         this.id = id;
-        this.url = url;
+        this.alt = alt;
         this.year = year;
         this.title = title;
         this.rating = rating;
@@ -45,12 +45,12 @@ public class Movie {
         this.id = id;
     }
 
-    public String getUrl() {
-        return url;
+    public String getAlt() {
+        return alt;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setAlt(String alt) {
+        this.alt = alt;
     }
 
     public int getYear() {
