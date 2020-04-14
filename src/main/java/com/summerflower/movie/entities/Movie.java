@@ -34,6 +34,15 @@ public class Movie {
         this.imageUrl = imageUrl;
     }
 
+    public Movie(int id, String alt, String title, float rating, String genres, String imageUrl) {
+        this.id = id;
+        this.alt = alt;
+        this.title = title;
+        this.rating = rating;
+        this.genres = genres;
+        this.imageUrl = imageUrl;
+    }
+
     public Movie() {
     }
 

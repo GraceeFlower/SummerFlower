@@ -1,9 +1,11 @@
 package com.summerflower.movie.controller;
 
+import com.summerflower.movie.entities.Detail;
 import com.summerflower.movie.entities.Movie;
 import com.summerflower.movie.services.MovieService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class MovieController {
@@ -15,7 +17,13 @@ public class MovieController {
     }
 
     @GetMapping("/movies")
-    public Iterable<Movie> getMovies() {
-        return movieService.getMovies();
+    public Iterable<Movie> getDisplayMoviesInRange(@RequestParam(name = "num") int num) {
+        return movieService.getDisplayMoviesInRange(num);
     }
+
+    @GetMapping("/movies/idList")
+    public List<Integer> getIdList() {
+        return movieService.getId();
+    }
+
 }

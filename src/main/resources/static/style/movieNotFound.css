@@ -1,0 +1,20 @@
+body {
+  background-color: darkgray;
+}
+
+.not-found-content {
+  width: 80%;
+  margin: 140px auto;
+  color: #2c2c2c;
+}
+
+.not-found-notice-text {
+  display: inline-block;
+  margin-left: 30px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

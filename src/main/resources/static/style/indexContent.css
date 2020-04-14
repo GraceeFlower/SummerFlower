@@ -1,0 +1,76 @@
+body {
+  background-color: #eee;
+  font-size: 14px;
+}
+
+.movie-menu > header {
+  padding-left: 10px;
+  height: 35px;
+  line-height: 35px;
+}
+
+.classification {
+  display: flex;
+  padding: 15px 10%;
+  width: 80%;
+  flex-wrap: wrap;
+  text-align: center;
+  background-color: #fff;
+}
+
+.classification span {
+  margin: 5px 20px;
+  width: 60px;
+  cursor: pointer;
+}
+
+.classification span:hover {
+  font-weight: bold;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px 10%;
+}
+
+.movie-list li {
+  padding: 10px;
+  box-shadow: 7px 11px 10px #aaa;
+  margin: 20px 25px;
+  cursor: pointer;
+}
+
+.movie-list .movie-cover {
+  margin-bottom: 10px;
+  border: 6px solid #fff;
+  border-radius: 4px;
+}
+
+.movie-list .movie-cover, .movie-list img {
+  width: 135px;
+  height: 200px;
+}
+
+.movie-list .movie-average {
+  color: #f3ab3a;
+}
+
+.movie-profile .view-more {
+  display: none;
+  padding: 35px 10%;
+}
+
+.view-more .current-page {
+  flex: 1;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.view-more .change-page {
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+}
