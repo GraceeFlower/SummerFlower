@@ -4,14 +4,12 @@ const pageInfo = document.getElementsByClassName('current-page')[0];
 let [wholePage, currentPage] = [1, 1];
 let currentMovie;
 
+loadMenu();
 loadItems();
 
 function loadMovieMenu(data) {
-  const movieClass = [...new Set(data.reduce((pre, cur) => pre.concat(cur.genres.split(",")), []))];
-  movieMenu.innerHTML = movieClass.reduce((allType, item) =>
+  movieMenu.innerHTML = data.reduce((allType, item) =>
     allType += `<span>${item}</span>`, `<span>全部</span>`);
-  let randomList = Math.floor(Math.random() * (data.length - 10));
-  loadMovieList(data.slice(randomList, randomList + 10));
 }
 
 movieMenu.addEventListener('click', renderChosenMovie, true);
@@ -23,11 +21,7 @@ function renderChosenMovie(event) {
     event.target.style.color = '#ec8aa4';
     let type = event.target.innerHTML;
     movieList.innerHTML = '';
-    currentMovie = [];
-    data.forEach(item => {
-      if ('全部' === type || item.genres.includes(type)) { currentMovie.push(item); }
-    });
-    separatePage(currentMovie);
+    currentMovie = '全部' === type ? getPointedTypeMenu('') : getPointedTypeMenu(type);
   }
 }
 
@@ -57,7 +51,7 @@ movieList.addEventListener("click", function (event) {
       window.location.href = `./movieDetails.html?id=${target.parentNode.id}`;
     }
   }
-})
+});
 
 function separatePage(currentMovie) {
   if (currentMovie.length > 10) {

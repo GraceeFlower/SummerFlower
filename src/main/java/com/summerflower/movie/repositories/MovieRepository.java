@@ -9,4 +9,7 @@ public interface MovieRepository extends CrudRepository<Movie, Integer> {
 
     @Query("SELECT * FROM movies ORDER BY rating DESC LIMIT :num")
     Iterable<Movie> findMovieInRange(@Param("num") Integer num);
+
+    @Query("SELECT * FROM movies WHERE genres LIKE :type")
+    Iterable<Movie> findMoviesByType(@Param("type") String type);
 }

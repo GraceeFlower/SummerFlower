@@ -5,13 +5,15 @@ import com.summerflower.movie.repositories.MovieRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class MovieService {
 
     private final MovieRepository movieRepository;
-
 
     public MovieService(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
@@ -26,5 +28,15 @@ public class MovieService {
         List<Integer> idList = new ArrayList<>();
         movieRepository.findAll().forEach(item -> idList.add(item.getId()));
         return idList;
+    }
+
+    public List<String> getMenu() {
+        return Arrays.stream(StreamSupport.stream(movieRepository.findAll().spliterator(), false)
+            .map(Movie::getGenres).collect(Collectors.joining(","))
+            .split(",")).distinct().collect(Collectors.toList());
+    }
+
+    public Iterable<Movie> getPointedTypeMovies(String type) {
+        return movieRepository.findMoviesByType("%" + type + "%");
     }
 }

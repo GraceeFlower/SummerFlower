@@ -4,8 +4,6 @@ import com.summerflower.movie.entities.Detail;
 import com.summerflower.movie.repositories.DetailRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class DetailService {
 
@@ -15,7 +13,11 @@ public class DetailService {
         this.detailRepository = detailRepository;
     }
 
-    public void saveDetails(List<Detail> detailList) {
-        detailRepository.saveAll(detailList);
+    public void saveDetails(Detail detailList) {
+        detailRepository.save(detailList);
+    }
+
+    public Detail getInfo(int id) {
+        return detailRepository.findById(id).orElse(null);
     }
 }

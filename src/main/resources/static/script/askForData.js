@@ -17,11 +17,31 @@ function loadItems() {
     url: BASIC_URL + '/movies?num=10',
     method: 'GET',
     success: function (responseText) {
-      console.log(responseText);
+      loadMovieList(responseText);
+    }
+  });
+}
+
+function loadMenu() {
+  ajax({
+    url: BASIC_URL + '/movies/menu',
+    method: 'GET',
+    success: function (responseText) {
       loadMovieMenu(responseText);
     }
   });
 }
+
+function getPointedTypeMenu(type) {
+  ajax({
+    url: BASIC_URL + '/movies/type?type=' + type,
+    method: 'GET',
+    success: function (responseText) {
+      currentMovie = responseText;
+      separatePage(responseText);
+    }});
+}
+
 
 function loadSearchData() {
   ajax({
@@ -46,7 +66,7 @@ function loadDetailSearchData() {
 
 function loadDetailData() {
   ajax({
-    url: BASIC_URL + '/v2/movie/subject/' + movieDetailPageId,
+    url: BASIC_URL + '/movie' + movieDetailPageId,
     method: 'GET',
     success: function (responseText) {
       movieDetailData = responseText;

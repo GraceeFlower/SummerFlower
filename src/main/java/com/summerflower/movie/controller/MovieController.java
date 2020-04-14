@@ -26,4 +26,14 @@ public class MovieController {
         return movieService.getId();
     }
 
+    @GetMapping("/movies/menu")
+    public List<String> getMenu() {
+        return movieService.getMenu();
+    }
+
+    @GetMapping("/movies/type")
+    public Iterable<Movie> getPointedTypeMovies(@RequestParam(name = "type") String type) {
+        return movieService.getPointedTypeMovies(type);
+    }
+
 }
