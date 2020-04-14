@@ -24,12 +24,6 @@ public class MovieService {
         return movieRepository.findMovieInRange(num);
     }
 
-    public List<Integer> getId() {
-        List<Integer> idList = new ArrayList<>();
-        movieRepository.findAll().forEach(item -> idList.add(item.getId()));
-        return idList;
-    }
-
     public List<String> getMenu() {
         return Arrays.stream(StreamSupport.stream(movieRepository.findAll().spliterator(), false)
             .map(Movie::getGenres).collect(Collectors.joining(","))

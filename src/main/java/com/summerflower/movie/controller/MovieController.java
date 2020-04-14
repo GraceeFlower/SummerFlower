@@ -21,11 +21,6 @@ public class MovieController {
         return movieService.getDisplayMoviesInRange(num);
     }
 
-    @GetMapping("/movies/idList")
-    public List<Integer> getIdList() {
-        return movieService.getId();
-    }
-
     @GetMapping("/movies/menu")
     public List<String> getMenu() {
         return movieService.getMenu();
