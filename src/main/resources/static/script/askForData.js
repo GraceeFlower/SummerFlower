@@ -104,3 +104,13 @@ function loadDetailSimilar(genres) {
     }
   });
 }
+
+function loadSuggestionMovie(keyword) {
+  ajax({
+    url: BASIC_URL + '/movies/keyword?keyword=' + keyword,
+    method: 'GET',
+    success: function (responseText) {
+      addSuggestMovieItem(responseText);
+    }
+  });
+}

@@ -22,7 +22,7 @@ const searchSuggestList = document.getElementsByClassName("search-suggest-list")
 
 topSearchInput.addEventListener("input", function (event) {
   let searchContent = event.target.value;
-  recommendSearchArray = isContain(searchContent);
+  recommendSearchArray = loadSuggestionMovie(searchContent);
   setSuggestMoviePullDown();
 });
 
@@ -45,6 +45,8 @@ function setSuggestMoviePullDown() {
   if (recommendSearchArray.length > 5) {
     searchSuggest.style.height = "400px";
     searchSuggest.style.overflow = "auto";
+  } else {
+    searchSuggest.style.height = "auto";
   }
 }
 
@@ -53,9 +55,9 @@ function addSuggestMovieItem() {
     let suggestMovieData = data.filter(item => (cur === item.id))[0];
     return pre += `
     <li class="suggest-item" id='${suggestMovieData.id}'>
-      <img class="suggest-item-img" src='${suggestMovieData.images.small}' />
+      <img class="suggest-item-img" src='${suggestMovieData.images}' alt='${suggestMovieData.title}'/>
       <span class="suggest-item-name">${suggestMovieData.title}</span>
-      <span class="suggest-item-rating">${judgeAverage(suggestMovieData.rating.average)}</span>
+      <span class="suggest-item-rating">${standardAverage(suggestMovieData.rating)}</span>
     </li>`
   }, '');
 }
