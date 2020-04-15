@@ -1,14 +1,7 @@
 let BASIC_URL = 'http://localhost:8080';
 let thisURL = document.URL;
 let getIdFromURL = thisURL.split("?")[1];
-let movieDetailPageId;
-
-function findMovieId() {
-  if (getIdFromURL) {
-    movieDetailPageId = getIdFromURL.split("=")[1];
-  }
-}
-findMovieId();
+let movieDetailPageId = getIdFromURL ? getIdFromURL.split("=")[1] : "";
 
 function loadDisplayItems() {
   ajax({
@@ -37,7 +30,8 @@ function getPointedTypeMenu(type) {
     success: function (responseText) {
       currentMovie = responseText;
       separatePage(responseText);
-    }});
+    }
+  });
 }
 
 function loadDetailData() {

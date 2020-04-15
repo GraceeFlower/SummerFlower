@@ -26,10 +26,7 @@ public class MovieController {
     }
 
     @GetMapping("/movies/type")
-    public Iterable<Movie> getPointedTypeMovies(@RequestParam(name = "type") String type
-//                                                ,@RequestParam(name = "start") int start,
-//                                                @RequestParam(name = "count") int count
-    ) {
+    public Iterable<Movie> getPointedTypeMovies(@RequestParam(name = "type") String type) {
         return movieService.getPointedTypeMovies(type);
     }
 
