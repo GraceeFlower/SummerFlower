@@ -17,7 +17,7 @@ public class DetailService {
         detailRepository.save(detailList);
     }
 
-    public Detail getInfo(int id) {
-        return detailRepository.findById(id).orElse(null);
+    public Detail getMovieById(int id) {
+        return detailRepository.findDetailById(id);
     }
 }

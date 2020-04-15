@@ -18,9 +18,9 @@ public class DetailController {
         detailService.saveDetails(detailList);
     }
 
-//    @GetMapping("{id}")
-//    public Detail getInfo(@PathVariable Integer id) {
-//        return detailService.getInfo(id);
-//    }
+    @GetMapping("/movies/detail")
+    public Detail getMovieById(@RequestParam(name = "id") int id) {
+        return detailService.getMovieById(id);
+    }
 
 }

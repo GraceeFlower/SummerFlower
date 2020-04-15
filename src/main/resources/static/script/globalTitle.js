@@ -2,9 +2,9 @@ const header = document.getElementsByTagName("header")[0];
 
 if (thisURL.match(/.+movieDetails.html/)) {
   loadDetailData();
-  loadDetailSearchData();
+  // loadDetailSearchData();
 } else {
-  loadSearchData();
+  // loadSearchData();
 }
 
 let relatedMovie = [];

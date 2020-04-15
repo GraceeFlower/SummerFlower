@@ -4,7 +4,6 @@ import com.summerflower.movie.entities.Movie;
 import com.summerflower.movie.repositories.MovieRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

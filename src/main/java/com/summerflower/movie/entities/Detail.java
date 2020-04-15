@@ -4,16 +4,20 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.util.Date;
+
 
 @Table("movie_detail")
 public class Detail {
 
     @Id
     private int id;
+    @Column("movie_id")
+    private int movieId;
     private String title;
     @Column("origin_title")
     private String originTitle;
-    private int year;
+    private Date year;
     @Column("image")
     private String smallImage;
     @Column("directors")
@@ -30,17 +34,14 @@ public class Detail {
     private String publicDateList;
     @Column("rating")
     private float average;
-    @Column("videos")
-    private String videoList;
     private String summary;
-    @Column("reviews")
-    private String popularReviewList;
 
     public Detail() {
     }
 
-    public Detail(int id, String title, String originTitle, int year, String smallImage, String directorList, String castList, String genres, String countryList, String languageList, String duration, String publicDateList, float average, String videoList, String summary, String popularReviewList) {
+    public Detail(int id, int movieId, String title, String originTitle, Date year, String smallImage, String directorList, String castList, String genres, String countryList, String languageList, String duration, String publicDateList, float average, String summary) {
         this.id = id;
+        this.movieId = movieId;
         this.title = title;
         this.originTitle = originTitle;
         this.year = year;
@@ -53,9 +54,7 @@ public class Detail {
         this.duration = duration;
         this.publicDateList = publicDateList;
         this.average = average;
-        this.videoList = videoList;
         this.summary = summary;
-        this.popularReviewList = popularReviewList;
     }
 
     public int getId() {
@@ -64,6 +63,14 @@ public class Detail {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
     }
 
     public String getTitle() {
@@ -82,11 +89,11 @@ public class Detail {
         this.originTitle = originTitle;
     }
 
-    public int getYear() {
+    public Date getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Date year) {
         this.year = year;
     }
 
@@ -162,27 +169,11 @@ public class Detail {
         this.average = average;
     }
 
-    public String getVideoList() {
-        return videoList;
-    }
-
-    public void setVideoList(String videoList) {
-        this.videoList = videoList;
-    }
-
     public String getSummary() {
         return summary;
     }
 
     public void setSummary(String summary) {
         this.summary = summary;
-    }
-
-    public String getPopularReviewList() {
-        return popularReviewList;
-    }
-
-    public void setPopularReviewList(String popularReviewList) {
-        this.popularReviewList = popularReviewList;
     }
 }

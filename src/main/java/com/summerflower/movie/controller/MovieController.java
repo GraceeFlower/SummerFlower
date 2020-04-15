@@ -1,6 +1,5 @@
 package com.summerflower.movie.controller;
 
-import com.summerflower.movie.entities.Detail;
 import com.summerflower.movie.entities.Movie;
 import com.summerflower.movie.services.MovieService;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +26,10 @@ public class MovieController {
     }
 
     @GetMapping("/movies/type")
-    public Iterable<Movie> getPointedTypeMovies(@RequestParam(name = "type") String type) {
+    public Iterable<Movie> getPointedTypeMovies(@RequestParam(name = "type") String type
+//                                                ,@RequestParam(name = "start") int start,
+//                                                @RequestParam(name = "count") int count
+    ) {
         return movieService.getPointedTypeMovies(type);
     }
-
 }

@@ -1,6 +1,6 @@
 let BASIC_URL = 'http://localhost:8080';
-const top250 = 'top250';
-
+// const top250 = 'top250';
+//
 let thisURL = document.URL;
 let getIdFromURL = thisURL.split("?")[1];
 let movieDetailPageId;
@@ -43,33 +43,32 @@ function getPointedTypeMenu(type) {
 }
 
 
-function loadSearchData() {
-  ajax({
-    url: BASIC_URL + '/v2/movie/' + top250,
-    method: 'GET',
-    success: function (responseText) {
-      data = responseText.subjects;
-    }
-  });
-}
+// function loadSearchData() {
+//   ajax({
+//     url: BASIC_URL + '/v2/movie/' + top250,
+//     method: 'GET',
+//     success: function (responseText) {
+//       data = responseText.subjects;
+//     }
+//   });
+// }
 
-function loadDetailSearchData() {
-  ajax({
-    url: BASIC_URL + '/v2/movie/' + top250,
-    method: 'GET',
-    success: function (responseText) {
-      data = responseText.subjects;
-      findSimilarArray();
-    }
-  });
-}
+// function loadDetailSearchData() {
+//   ajax({
+//     url: BASIC_URL + '/v2/movie/' + top250,
+//     method: 'GET',
+//     success: function (responseText) {
+//       data = responseText.subjects;
+//       findSimilarArray();
+//     }
+//   });
+// }
 
 function loadDetailData() {
   ajax({
-    url: BASIC_URL + '/movie' + movieDetailPageId,
+    url: BASIC_URL + '/movie/id?id=' + movieDetailPageId,
     method: 'GET',
     success: function (responseText) {
-      movieDetailData = responseText;
       renderMovieDetail(responseText);
     }
   });
