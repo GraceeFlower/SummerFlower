@@ -29,6 +29,7 @@ function renderChosenMovie(event) {
 
 function loadMovieList(movie) {
   movie.forEach((element) => addMovieItem(element));
+  adjustFootBar();
 }
 
 function addMovieItem(movie) {

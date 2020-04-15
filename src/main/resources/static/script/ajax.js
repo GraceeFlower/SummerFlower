@@ -1,6 +1,3 @@
-let movieDetailData;
-let data;
-
 window.ajax = function (options) {
   const ajaxData = {
     url: options.url || "",
@@ -9,13 +6,13 @@ window.ajax = function (options) {
     data: options.data || null,
     success: options.success || function (result) { },
     fail: options.fail || function (error) { }
-  }
+  };
   let xhr;
   if (window.XMLHttpRequest) {
     xhr = new XMLHttpRequest();
   } else {
     xhr = new ActiveXObject('Microsoft.XMLHTTP');
-  };
+  }
   xhr.open(ajaxData.method, ajaxData.url, true);
   if (ajaxData.method === 'POST' || ajaxData.method === 'PUT') {
     xhr.setRequestHeader('content-type', 'application/json');

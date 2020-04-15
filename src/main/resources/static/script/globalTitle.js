@@ -1,4 +1,5 @@
 const keyword = decodeURI(thisURL.match(/(?<=keyword=).*/));
+const footBar = document.getElementsByTagName("footer")[0];
 
 if (thisURL.match(/.+movieDetails.html/)) {
   loadDetailData();
@@ -41,6 +42,7 @@ function addSuggestMovieItem(suggestArray) {
       <span class="suggest-item-rating">${standardAverage(cur.rating)}</span>
     </li>`
   , '');
+  adjustFootBar();
 }
 
 searchSuggest.addEventListener("click", function (event) {
@@ -54,4 +56,8 @@ searchSuggest.addEventListener("click", function (event) {
 
 function standardAverage(average) {
   return average.toString().length === 1 ? `${average}.0` : average;
+}
+
+function adjustFootBar() {
+  footBar.style.position = document.body.scrollHeight > window.screen.height ? "static" : "fixed";
 }

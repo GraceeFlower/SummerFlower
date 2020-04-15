@@ -69,7 +69,7 @@ function renderSimilarMovie(similar) {
       </li>`
       , '');
   }
-  
+  adjustFootBar();
   similarList.addEventListener("click", function (event) {
     let target = event.target;
     if ('similar-movie-list' !== target.className) {

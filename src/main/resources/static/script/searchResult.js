@@ -17,6 +17,7 @@ function renderMovies(movie) {
       <span class="movie-name">${element.title}</span>
       <span class="movie-average">${standardAverage(element.rating)}</span>
     </li>`);
+    adjustFootBar();
 }
 
 movieList.addEventListener("click", function (event) {
