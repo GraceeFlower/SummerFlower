@@ -1,5 +1,3 @@
-const header = document.getElementsByTagName("header")[0];
-
 if (thisURL.match(/.+movieDetails.html/)) {
   loadDetailData();
 }
@@ -16,14 +14,16 @@ function searchOperate() {
   }
 }
 
-let recommendSearchArray = [];
 const searchSuggest = document.getElementsByClassName("search-suggest")[0];
 const searchSuggestList = document.getElementsByClassName("search-suggest-list")[0];
 
 topSearchInput.addEventListener("input", function (event) {
-  let searchContent = event.target.value;
-  recommendSearchArray = loadSuggestionMovie(searchContent);
-  setSuggestMoviePullDown();
+  let value = event.target.value
+  if (value) {
+    loadSuggestionMovie(value);
+  } else {
+    setSuggestMoviePullDown([]);
+  }
 });
 
 function isABitContain(searchContent) {
@@ -38,28 +38,24 @@ function isABitContain(searchContent) {
   return containThisMovieArray;
 }
 
-function setSuggestMoviePullDown() {
+function setSuggestMoviePullDown(suggestArray) {
   searchSuggest.style.height = "auto";
   searchSuggestList.innerHTML = "";
-  addSuggestMovieItem();
-  if (recommendSearchArray.length > 5) {
+  if (suggestArray.length > 5) {
     searchSuggest.style.height = "400px";
     searchSuggest.style.overflow = "auto";
-  } else {
-    searchSuggest.style.height = "auto";
   }
 }
 
-function addSuggestMovieItem() {
-  searchSuggestList.innerHTML = recommendSearchArray.reduce((pre, cur) => {
-    let suggestMovieData = data.filter(item => (cur === item.id))[0];
-    return pre += `
-    <li class="suggest-item" id='${suggestMovieData.id}'>
-      <img class="suggest-item-img" src='${suggestMovieData.images}' alt='${suggestMovieData.title}'/>
-      <span class="suggest-item-name">${suggestMovieData.title}</span>
-      <span class="suggest-item-rating">${standardAverage(suggestMovieData.rating)}</span>
+function addSuggestMovieItem(suggestArray) {
+  setSuggestMoviePullDown(suggestArray);
+  searchSuggestList.innerHTML = suggestArray.reduce((pre, cur) =>
+    pre += `<li class="suggest-item" id='${cur.id}'>
+      <img class="suggest-item-img" src='${cur.image}' alt='${cur.title}'/>
+      <span class="suggest-item-name">${cur.title}</span>
+      <span class="suggest-item-rating">${standardAverage(cur.rating)}</span>
     </li>`
-  }, '');
+  , '');
 }
 
 searchSuggest.addEventListener("click", function (event) {
