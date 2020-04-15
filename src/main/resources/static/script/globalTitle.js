@@ -7,7 +7,7 @@ if (thisURL.match(/.+movieDetails.html/)) {
 let topSearchInput = document.getElementsByClassName("top-search-input")[0];
 function searchOperate() {
   let searchContent = topSearchInput.value;
-  let searchMovieId = isContain(searchContent);
+  let searchMovieId = isABitContain(searchContent);
   if (-1 === searchMovieId) {
     window.location.href = `./movieNotFound.html?searchContent=${searchContent}`;
   } else {
@@ -22,7 +22,7 @@ const searchSuggestList = document.getElementsByClassName("search-suggest-list")
 
 topSearchInput.addEventListener("input", function (event) {
   let searchContent = event.target.value;
-  recommendSearchArray = isABitContain(searchContent);
+  recommendSearchArray = isContain(searchContent);
   setSuggestMoviePullDown();
 });
 
