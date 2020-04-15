@@ -15,7 +15,7 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-    @GetMapping("movies/comment")
+    @GetMapping("/movies/comment")
     public Iterable<Comment> getCommentsById(@RequestParam(name = "id") int id) {
         return commentService.getCommentsById(id);
     }

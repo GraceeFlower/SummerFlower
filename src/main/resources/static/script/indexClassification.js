@@ -33,7 +33,7 @@ function addMovieItem(movie) {
   movieList.innerHTML += `
     <li id='${movie.id}'>
       <div class="movie-cover">
-        <img src='${movie.images}' alt='${movie.title}'/>
+        <img src='${movie.image}' alt='${movie.title}'/>
       </div>
       <span class="movie-name">${movie.title}</span>
       <span class="movie-average">${judgeAverage(movie.rating)}</span>

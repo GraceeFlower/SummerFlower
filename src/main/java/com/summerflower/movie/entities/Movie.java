@@ -8,22 +8,22 @@ import org.springframework.data.relational.core.mapping.Table;
 public class Movie {
 
     @Id
+    @Column("movie_id")
     private int id;
     private String title;
     private float rating;
     private String genres;
-    @Column("image")
-    private String imageUrl;
+    private String image;
 
     public Movie() {
     }
 
-    public Movie(int id, String title, float rating, String genres, String imageUrl) {
+    public Movie(int id, String title, float rating, String genres, String image) {
         this.id = id;
         this.title = title;
         this.rating = rating;
         this.genres = genres;
-        this.imageUrl = imageUrl;
+        this.image = image;
     }
 
     public int getId() {
@@ -58,12 +58,12 @@ public class Movie {
         this.genres = genres;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImage() {
+        return image;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImage(String image) {
+        this.image = image;
     }
 
 }

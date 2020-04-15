@@ -7,10 +7,10 @@ import org.springframework.data.repository.query.Param;
 
 public interface MovieRepository extends CrudRepository<Movie, Integer> {
 
-    @Query("SELECT id, title, rating, genres, image FROM movies ORDER BY rating DESC LIMIT :num")
+    @Query("SELECT movie_id, title, rating, genres, image FROM movie_detail ORDER BY rating DESC LIMIT :num")
     Iterable<Movie> findMovieInRange(@Param("num") Integer num);
 
-    @Query("SELECT id, title, rating, genres, image FROM movies WHERE genres LIKE :type")
+    @Query("SELECT movie_id, title, rating, genres, image FROM movie_detail WHERE genres LIKE :type")
     Iterable<Movie> findMoviesByType(@Param("type") String type);
 
 }

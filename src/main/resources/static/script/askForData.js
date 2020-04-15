@@ -70,6 +70,7 @@ function loadDetailData() {
     method: 'GET',
     success: function (responseText) {
       loadDetailComment();
+      loadDetailVideo();
       renderMovieDetail(responseText);
     }
   });
