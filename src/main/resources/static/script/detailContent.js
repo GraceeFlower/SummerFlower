@@ -81,7 +81,3 @@ function renderSimilarMovie(similar) {
     }
   })
 }
-
-function standardAverage(average) {
-  return average.toString().length === 1 ? `${average}.0` : average;
-}

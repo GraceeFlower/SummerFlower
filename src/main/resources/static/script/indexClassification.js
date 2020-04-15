@@ -36,7 +36,7 @@ function addMovieItem(movie) {
         <img src='${movie.image}' alt='${movie.title}'/>
       </div>
       <span class="movie-name">${movie.title}</span>
-      <span class="movie-average">${judgeAverage(movie.rating)}</span>
+      <span class="movie-average">${standardAverage(movie.rating)}</span>
     </li>`
 }
 

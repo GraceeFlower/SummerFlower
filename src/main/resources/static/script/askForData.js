@@ -40,28 +40,6 @@ function getPointedTypeMenu(type) {
     }});
 }
 
-
-// function loadSearchData() {
-//   ajax({
-//     url: BASIC_URL + '/v2/movie/' + top250,
-//     method: 'GET',
-//     success: function (responseText) {
-//       data = responseText.subjects;
-//     }
-//   });
-// }
-
-// function loadDetailSearchData() {
-//   ajax({
-//     url: BASIC_URL + '/v2/movie/' + top250,
-//     method: 'GET',
-//     success: function (responseText) {
-//       data = responseText.subjects;
-//       findSimilarArray();
-//     }
-//   });
-// }
-
 function loadDetailData() {
   ajax({
     url: BASIC_URL + '/movies/detail?id=' + movieDetailPageId,
