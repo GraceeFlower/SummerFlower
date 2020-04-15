@@ -2,20 +2,20 @@ const detailPage = document.getElementsByClassName('detail-page-content')[0];
 
 function renderMovieDetail(movie) {
   detailPage.innerHTML = `
-    <h1 class="movie-title-and-date">${movie.title}-${movie.original_title}(${movie.year})</h1>
+    <h1 class="movie-title-and-date">${movie.title}-${movie.originTitle}(${movie.year})</h1>
     <div class="movie-poster-and-detail">
-      <div class="movie-poster"><img src="${movie.images.small}" alt=""/></div>
+      <div class="movie-poster"><img src="${movie.smallImage}" alt="${movie.title}"/></div>
       <div class="movie-detail">
-        <div><span class="detail-name">导演：</span><span class="detail-text">${composeName(movie.directors)}</div>
-        <div><span class="detail-name">主演：</span><span class="detail-text">${composeName(movie.casts)}</div>
-        <div><span class="detail-name">类型：</span><span class="detail-text">${movie.genres.join(',')}</div>
-        <div><span class="detail-name">制作国家/地区：</span><span class="detail-text">${movie.countries.join(',')}</div>
-        <div><span class="detail-name">语言：</span><span class="detail-text">${movie.languages.join(',')}</div>
-        <div><span class="detail-name">片长：</span><span class="detail-text">${movie.durations.join(',')}</div>
-        <div><span class="detail-name">上映时间：</span><span class="detail-text">${movie.pubdates.join(',')}</div>
-        <div><span class="detail-name">豆瓣评分：</span><span class="detail-text">${judgeAverage(movie.rating.average)}</div>
+        <div><span class="detail-name">导演：</span><span class="detail-text">${movie.directorList}</div>
+        <div><span class="detail-name">主演：</span><span class="detail-text">${movie.castList}</div>
+        <div><span class="detail-name">类型：</span><span class="detail-text">${movie.genres}</div>
+        <div><span class="detail-name">制作国家/地区：</span><span class="detail-text">${movie.countryList}</div>
+        <div><span class="detail-name">语言：</span><span class="detail-text">${movie.languageList}</div>
+        <div><span class="detail-name">片长：</span><span class="detail-text">${movie.duration}</div>
+        <div><span class="detail-name">上映时间：</span><span class="detail-text">${movie.publicDateList}</div>
+        <div><span class="detail-name">豆瓣评分：</span><span class="detail-text">${standardAverage(movie.average)}</div>
       </div>
-      <div class="movie-video"><h5>电影路径</h5><ul>${renderMovieVideo(movie.videos)}</ul></div>
+      <div class="movie-video"><h5>电影路径</h5><ul></ul></div>
     </div>
     <div class="movie-story-intro">
       <div class="item-title">剧情介绍</div>
@@ -23,15 +23,9 @@ function renderMovieDetail(movie) {
     </div>
     <div class="movie-reviews">
       <div class="item-title">豆瓣热评Top5</div>
-      <div class="comment-list">${renderComment(movie.popular_reviews.slice(0, 5))}</div>
+      <div class="comment-list"></div>
     </div>
   `
-}
-
-function composeName(nameArr) {
-  let res = [];
-  nameArr.forEach(item => res.push(item.name));
-  return res.join(',');
 }
 
 function renderMovieVideo(video) {
@@ -47,12 +41,13 @@ function renderMovieVideo(video) {
 }
 
 function renderComment(comment) {
-  return comment.reduce((whole, item) => whole += `
+  document.getElementsByClassName("comment-list")[0].innerHTML =
+      comment.reduce((whole, item) => whole += `
   <div class="commenter-info">
-    <img src="${item.author.avatar}" alt="${item.author.uid}" />
-    <span class="commenter-name">${item.author.name}</span>
-    <span class="comment-title">#${item.title}#</span>
-    <div class="comment-text">${item.summary}</div>
+    <img src="${item.userAvatar}" alt="${item.userName}" />
+    <span class="commenter-name">${item.userName}</span>
+    <span class="comment-title">#${item.commentTitle}#</span>
+    <div class="comment-text">${item.commentContent}</div>
   </div>`, '');
 }
 
@@ -84,4 +79,8 @@ function renderSimilarMovie() {
       }
     }
   })
+}
+
+function standardAverage(average) {
+  return average.toString().length === 1 ? `${average}.0` : average;
 }

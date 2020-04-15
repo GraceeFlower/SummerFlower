@@ -66,10 +66,31 @@ function getPointedTypeMenu(type) {
 
 function loadDetailData() {
   ajax({
-    url: BASIC_URL + '/movie/id?id=' + movieDetailPageId,
+    url: BASIC_URL + '/movies/detail?id=' + movieDetailPageId,
     method: 'GET',
     success: function (responseText) {
+      loadDetailComment();
       renderMovieDetail(responseText);
+    }
+  });
+}
+
+function loadDetailVideo() {
+  ajax({
+    url: BASIC_URL + '/movies/video?id=' + movieDetailPageId,
+    method: 'GET',
+    success: function (responseText) {
+      renderMovieVideo(responseText);
+    }
+  });
+}
+
+function loadDetailComment() {
+  ajax({
+    url: BASIC_URL + '/movies/comment?id=' + movieDetailPageId,
+    method: 'GET',
+    success: function (responseText) {
+      renderComment(responseText);
     }
   });
 }
