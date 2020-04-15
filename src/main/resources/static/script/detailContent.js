@@ -36,7 +36,7 @@ function renderMovieVideo(video) {
   return videoInner.innerHTML = video.reduce((whole, item) => whole +=
     `<li>
       <a href="${item.link}">${item.platform}</a>
-      <span class="${item.isFree ? 'paying-movie' : 'free-movie'}">${item.isFree ? '¥付费' : '免费'}</span>
+      <span class="${item.free ? 'free-movie' : 'paying-movie'}">${item.free ?  '免费' : '¥付费'}</span>
     </li>`
     , '');
 }
