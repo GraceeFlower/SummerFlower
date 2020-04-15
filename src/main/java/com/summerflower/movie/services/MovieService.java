@@ -39,4 +39,8 @@ public class MovieService {
         }
         return movieSet;
     }
+
+    public Iterable<Movie> getSearchRelatedMovies(String keyword) {
+        return movieRepository.findMoviesByKeyword("%" + keyword + "%");
+    }
 }

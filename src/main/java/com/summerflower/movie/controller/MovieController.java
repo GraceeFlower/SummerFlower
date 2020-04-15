@@ -38,4 +38,9 @@ public class MovieController {
                                                 @RequestParam(name = "id") int id) {
         return movieService.getSimilarTypeMovies(type, id);
     }
+
+    @GetMapping("/movies/keyword")
+    public Iterable<Movie> getSearchRelatedMovies(@RequestParam(name = "keyword") String keyword) {
+        return movieService.getSearchRelatedMovies(keyword);
+    }
 }
