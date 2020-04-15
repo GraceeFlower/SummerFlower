@@ -23,4 +23,9 @@ public class DetailController {
         return detailService.getMovieById(id);
     }
 
+    @GetMapping("/movies/searched_movie")
+    public Detail getMovieByTitle(@RequestParam(name = "title") String title) {
+        return detailService.getMovieByTitle(title);
+    }
+
 }

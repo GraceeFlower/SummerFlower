@@ -9,4 +9,7 @@ public interface DetailRepository extends CrudRepository<Detail, Integer> {
 
     @Query("SELECT * FROM movie_detail WHERE movie_id = :id")
     Detail findDetailById(@Param("id") int id);
+
+    @Query("SELECT * FROM movie_detail WHERE title = :title")
+    Detail findDetailByTitle(@Param("title") String title);
 }
