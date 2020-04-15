@@ -20,4 +20,8 @@ public class DetailService {
     public Detail getMovieById(int id) {
         return detailRepository.findDetailById(id);
     }
+
+    public Detail getMovieByTitle(String title){
+        return detailRepository.findDetailByTitle(title);
+    }
 }
