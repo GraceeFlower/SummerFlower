@@ -4,12 +4,14 @@ const pageInfo = document.getElementsByClassName('current-page')[0];
 let [wholePage, currentPage] = [1, 1];
 let currentMovie;
 
-loadMenu();
-loadItems();
+(function () {
+  loadMenu();
+  loadDisplayItems();
+})();
 
 function loadMovieMenu(data) {
   movieMenu.innerHTML = data.reduce((allType, item) =>
-    allType += `<span>${item}</span>`, `<span>全部</span>`);
+      allType += `<span>${item}</span>`, `<span>全部</span>`);
 }
 
 movieMenu.addEventListener('click', renderChosenMovie, true);

@@ -1,3 +1,5 @@
+const keyword = decodeURI(thisURL.match(/(?<=keyword=).*/));
+
 if (thisURL.match(/.+movieDetails.html/)) {
   loadDetailData();
 }
@@ -5,6 +7,12 @@ if (thisURL.match(/.+movieDetails.html/)) {
 let topSearchInput = document.getElementsByClassName("top-search-input")[0];
 const searchSuggest = document.getElementsByClassName("search-suggest")[0];
 const searchSuggestList = document.getElementsByClassName("search-suggest-list")[0];
+
+function searchOperate() {
+  if (topSearchInput.value) {
+    window.location.href = `./searchResult.html?keyword=${topSearchInput.value}`;
+  }
+}
 
 topSearchInput.addEventListener("input", function (event) {
   let value = event.target.value;

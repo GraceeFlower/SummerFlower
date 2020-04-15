@@ -10,7 +10,7 @@ function findMovieId() {
 }
 findMovieId();
 
-function loadItems() {
+function loadDisplayItems() {
   ajax({
     url: BASIC_URL + '/movies?num=10',
     method: 'GET',
@@ -85,10 +85,22 @@ function loadDetailSimilar(genres) {
 
 function loadSuggestionMovie(keyword) {
   ajax({
-    url: BASIC_URL + '/movies/keyword?keyword=' + keyword,
+    url: `./movies/keyword?keyword=${keyword}`,
     method: 'GET',
     success: function (responseText) {
       addSuggestMovieItem(responseText);
+    }
+  });
+}
+
+function renderSuggestionMovie(keyword) {
+  ajax({
+    url: `./movies/keyword?keyword=${keyword}`,
+    method: 'GET',
+    success: function (responseText) {
+      currentMovie = responseText;
+      searchResultInfo.innerHTML = `已为您查询到${currentMovie.length}部与"${keyword}"相关的电影:`;
+      separatePage();
     }
   });
 }
