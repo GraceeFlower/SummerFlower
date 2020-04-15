@@ -1,6 +1,4 @@
 let BASIC_URL = 'http://localhost:8080';
-// const top250 = 'top250';
-//
 let thisURL = document.URL;
 let getIdFromURL = thisURL.split("?")[1];
 let movieDetailPageId;
@@ -71,6 +69,7 @@ function loadDetailData() {
     success: function (responseText) {
       loadDetailComment();
       loadDetailVideo();
+      loadDetailSimilar(responseText.genres);
       renderMovieDetail(responseText);
     }
   });
@@ -92,6 +91,16 @@ function loadDetailComment() {
     method: 'GET',
     success: function (responseText) {
       renderComment(responseText);
+    }
+  });
+}
+
+function loadDetailSimilar(genres) {
+  ajax({
+    url: BASIC_URL + '/movies/similarType?type=' + genres + "&id=" + movieDetailPageId,
+    method: 'GET',
+    success: function (responseText) {
+      renderSimilarMovie(responseText);
     }
   });
 }

@@ -32,4 +32,10 @@ public class MovieController {
     ) {
         return movieService.getPointedTypeMovies(type);
     }
+
+    @GetMapping("/movies/similarType")
+    public Iterable<Movie> getPointedTypeMovies(@RequestParam(name = "type") String type,
+                                                @RequestParam(name = "id") int id) {
+        return movieService.getSimilarTypeMovies(type, id);
+    }
 }

@@ -54,18 +54,18 @@ function renderComment(comment) {
 
 const similarMovie = document.getElementsByClassName('similar-movie-recommend')[0];
 
-function renderSimilarMovie() {
+function renderSimilarMovie(similar) {
   similarMovie.innerHTML = `<div class="item-title">相似电影</div><ul class="similar-movie-list"></ul>`;
   const similarList = document.getElementsByClassName('similar-movie-list')[0];
-  let randomSimilarIndex = relatedMovie.length > 12 ? Math.floor(Math.random() * (relatedMovie.length - 12)) : 0;
-  if (0 === relatedMovie.length) {
+  let randomSimilarIndex = similar.length > 12 ? Math.floor(Math.random() * (similar.length - 12)) : 0;
+  if (0 === similar.length) {
     similarList.innerHTML = "暂时没有哦～";
   } else {
-    similarList.innerHTML = relatedMovie.slice(randomSimilarIndex, randomSimilarIndex + 12).reduce((pre, cur) => pre +=
+    similarList.innerHTML = similar.slice(randomSimilarIndex, randomSimilarIndex + 12).reduce((pre, cur) => pre +=
       `<li id='${cur.id}'>
-        <div class="similar-movie-cover"><img src='${cur.images.small}' alt='${cur.title}'/></div>
+        <div class="similar-movie-cover"><img src='${cur.image}' alt='${cur.title}'/></div>
         <div class="similar-movie-name">${cur.title}</div>
-        <div class="similar-movie-average">${judgeAverage(cur.rating.average)}</div>
+        <div class="similar-movie-average">${standardAverage(cur.rating)}</div>
       </li>`
       , '');
   }

@@ -2,28 +2,6 @@ const header = document.getElementsByTagName("header")[0];
 
 if (thisURL.match(/.+movieDetails.html/)) {
   loadDetailData();
-  // loadDetailSearchData();
-} else {
-  // loadSearchData();
-}
-
-let relatedMovie = [];
-function findSimilarArray() {
-  const nowMovieGenres = movieDetailData.genres;
-  let type = nowMovieGenres[0];
-  data.forEach(item => {
-    if (item.genres.includes(type) && item.id !== movieDetailPageId) {relatedMovie.push(item);}
-  });
-  renderSimilarMovie();
-}
-
-function isContain(searchContent) {
-  for (let item in data) {
-    if (searchContent === data[item].title) {
-      return data[item].id;
-    }
-  }
-  return -1;
 }
 
 let topSearchInput = document.getElementsByClassName("top-search-input")[0];

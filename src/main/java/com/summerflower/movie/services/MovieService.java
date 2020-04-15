@@ -4,8 +4,7 @@ import com.summerflower.movie.entities.Movie;
 import com.summerflower.movie.repositories.MovieRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -31,5 +30,13 @@ public class MovieService {
 
     public Iterable<Movie> getPointedTypeMovies(String type) {
         return movieRepository.findMoviesByType("%" + type + "%");
+    }
+
+    public Iterable<Movie> getSimilarTypeMovies(String type, int id) {
+        Set<Movie> movieSet = new HashSet<>();
+        for(String i : type.split(",")) {
+            movieRepository.findSimilarMoviesByType("%" + i + "%", id).forEach(movieSet::add);
+        }
+        return movieSet;
     }
 }
